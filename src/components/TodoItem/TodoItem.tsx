@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { Todo, Priority } from '../../types';
+import { useLang } from '../../LangContext';
 import styles from './TodoItem.module.css';
 
 interface TodoItemProps {
@@ -11,9 +12,14 @@ interface TodoItemProps {
 }
 
 const PRIORITY_CYCLE: Priority[] = ['high', 'medium', 'low'];
-const PRIORITY_LABEL: Record<Priority, string> = { high: '高', medium: '中', low: '低' };
 
 export function TodoItem({ todo, onToggle, onDelete, onEdit, onPriorityChange }: TodoItemProps) {
+  const { t } = useLang();
+  const PRIORITY_LABEL: Record<Priority, string> = {
+    high: t.priorityHigh,
+    medium: t.priorityMedium,
+    low: t.priorityLow,
+  };
   const [editing, setEditing] = useState(false);
   const [editValue, setEditValue] = useState(todo.text);
   const inputRef = useRef<HTMLInputElement>(null);

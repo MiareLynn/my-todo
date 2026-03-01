@@ -1,5 +1,6 @@
 import type { Todo, Priority } from '../../types';
 import { TodoItem } from '../TodoItem/TodoItem';
+import { useLang } from '../../LangContext';
 import styles from './TodoList.module.css';
 
 interface TodoListProps {
@@ -11,8 +12,10 @@ interface TodoListProps {
 }
 
 export function TodoList({ todos, onToggle, onDelete, onEdit, onPriorityChange }: TodoListProps) {
+  const { t } = useLang();
+
   if (todos.length === 0) {
-    return <div className={styles.empty}>暂无任务</div>;
+    return <div className={styles.empty}>{t.empty}</div>;
   }
 
   return (

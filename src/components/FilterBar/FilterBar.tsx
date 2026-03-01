@@ -1,4 +1,5 @@
 import type { Filter } from '../../types';
+import { useLang } from '../../LangContext';
 import styles from './FilterBar.module.css';
 
 interface FilterBarProps {
@@ -8,13 +9,15 @@ interface FilterBarProps {
   totalCount: number;
 }
 
-const FILTERS: { label: string; value: Filter }[] = [
-  { label: '全部', value: 'all' },
-  { label: '待完成', value: 'active' },
-  { label: '已完成', value: 'done' },
-];
-
 export function FilterBar({ filter, onFilterChange, doneCount, totalCount }: FilterBarProps) {
+  const { t } = useLang();
+
+  const FILTERS: { label: string; value: Filter }[] = [
+    { label: t.filterAll, value: 'all' },
+    { label: t.filterActive, value: 'active' },
+    { label: t.filterDone, value: 'done' },
+  ];
+
   return (
     <div className={styles.filters}>
       {FILTERS.map(({ label, value }) => (
@@ -26,9 +29,7 @@ export function FilterBar({ filter, onFilterChange, doneCount, totalCount }: Fil
           {label}
         </button>
       ))}
-      <span className={styles.stats}>
-        {doneCount}/{totalCount} 已完成
-      </span>
+      <span className={styles.stats}>{t.stats(doneCount, totalCount)}</span>
     </div>
   );
 }

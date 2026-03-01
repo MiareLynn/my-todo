@@ -2,9 +2,11 @@ import { useTodos } from './hooks/useTodos';
 import { AddTodoInput } from './components/AddTodoInput/AddTodoInput';
 import { FilterBar } from './components/FilterBar/FilterBar';
 import { TodoList } from './components/TodoList/TodoList';
+import { useLang } from './LangContext';
 import styles from './App.module.css';
 
 function App() {
+  const { t, toggleLang } = useLang();
   const {
     filteredTodos,
     filter,
@@ -21,7 +23,12 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>待办事项</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>{t.title}</h1>
+        <button className={styles.langBtn} onClick={toggleLang}>
+          {t.langToggle}
+        </button>
+      </div>
       <AddTodoInput onAdd={addTodo} />
       <FilterBar
         filter={filter}
@@ -37,7 +44,7 @@ function App() {
         onPriorityChange={changePriority}
       />
       <button className={styles.clearBtn} onClick={clearDone}>
-        清除已完成
+        {t.clearDone}
       </button>
     </div>
   );
