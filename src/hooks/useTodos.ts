@@ -24,7 +24,7 @@ export function useTodos() {
   const doneCount = todos.filter((t) => t.done).length;
   const totalCount = todos.length;
 
-  const addTodo = (text: string, priority: Priority = 'medium') => {
+  const addTodo = (text: string, priority: Priority = 'high') => {
     const trimmed = text.trim();
     if (!trimmed) return;
     setTodos((prev) => [{ id: Date.now(), text: trimmed, done: false, priority }, ...prev]);

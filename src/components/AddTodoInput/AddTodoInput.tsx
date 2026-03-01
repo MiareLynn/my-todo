@@ -14,7 +14,7 @@ const PRIORITY_OPTIONS: { value: Priority; label: string }[] = [
 
 export function AddTodoInput({ onAdd }: AddTodoInputProps) {
   const [value, setValue] = useState('');
-  const [priority, setPriority] = useState<Priority>('medium');
+  const [priority, setPriority] = useState<Priority>('high');
 
   const handleAdd = () => {
     if (!value.trim()) return;
