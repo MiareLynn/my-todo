@@ -1,0 +1,127 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  animation: slideIn 0.2s ease;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkboxDone {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.checkboxDone::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.todoText {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  word-break: break-all;
+  cursor: pointer;
+}
+
+.todoTextDone {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.editInput {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  word-break: break-all;
+  background: #f5f5ff;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 4px;
+  outline: none;
+  font-family: inherit;
+}
+
+.priorityTag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+.priorityTag:hover {
+  opacity: 0.75;
+}
+
+.high {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.medium {
+  background: #ffedd5;
+  color: #f97316;
+}
+
+.low {
+  background: #dcfce7;
+  color: #22c55e;
+}
+
+.deleteBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.deleteBtn:hover {
+  color: #ef4444;
+  background: #fff0f0;
+}
